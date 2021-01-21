@@ -1,0 +1,8 @@
+[Unit]
+Description=LUKS AUTO key cleaner
+After=cryptsetup.target
+DefaultDependencies=no
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/rm -rfd --one-file-system /tmp/luks-auto

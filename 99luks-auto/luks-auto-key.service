@@ -1,0 +1,15 @@
+[Unit]
+Description=LUKS AUTO key searcher
+After=cryptsetup-pre.target
+Before=luks-auto.target
+DefaultDependencies=no
+
+[Service]
+Environment=DRACUT_SYSTEMD=1
+Type=oneshot
+ExecStartPre=/usr/bin/sleep 1
+ExecStart=/etc/systemd/system/luks-auto-key.sh
+RemainAfterExit=true
+StandardInput=null
+StandardOutput=syslog
+StandardError=syslog+console
